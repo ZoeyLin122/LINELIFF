@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>情緒日記｜LIFF</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>情緒日記</h1>
+      <p class="subtitle">在這裡紀錄你的今天，資料只用於輔導用途。</p>
+    </header>
+
+    <section id="profileCard" class="card">
+      <div class="row">
+        <div class="label">使用者</div>
+        <div id="displayName" class="value">載入中…</div>
+      </div>
+      <div class="row">
+        <div class="label">日期</div>
+        <input id="date" type="date" required />
+      </div>
+      <input id="userId" type="hidden" />
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <label class="label" for="mood">今天心情（1–5）：</label>
+        <input id="mood" type="range" min="1" max="5" step="1" value="3" oninput="document.getElementById('moodOut').innerText=this.value" />
+        <div id="moodOut" class="badge">3</div>
+      </div>
+
+      <div class="row">
+        <label class="label" for="tags">情緒標籤（可輸入多個，以逗號分隔）：</label>
+        <input id="tags" type="text" placeholder="例：開心, 緊張, 平靜" />
+      </div>
+
+      <div class="row">
+        <label class="label" for="text">想寫下的事：</label>
+      </div>
+      <textarea id="text" rows="6" placeholder="自由書寫…"></textarea>
+    </section>
+
+    <footer class="actions">
+      <button id="submitBtn">送出日記</button>
+      <button id="cancelBtn" class="ghost">取消</button>
+      <div id="status" class="status"></div>
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
