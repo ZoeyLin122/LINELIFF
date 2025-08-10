@@ -50,14 +50,14 @@ async function submitDiary() {
     date: document.getElementById("date").value,
     mood: parseInt(document.getElementById("mood").value, 10),
     tags: document.getElementById("tags").value.split(",").map(s => s.trim()).filter(Boolean),
-    text: document.getElementById("text").value,
+    text: document.getElementById("note").value,
     source: "liff-v2"
   };
 
   try {
     const res = await fetch(APPS_SCRIPT_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(payload)
     });
     if (!res.ok) throw new Error("HTTP " + res.status);
